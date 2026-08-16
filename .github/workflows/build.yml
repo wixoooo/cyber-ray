@@ -25,16 +25,16 @@ jobs:
           channel: 'stable'
 
       - name: Scaffold Android Files
-        run: flutter create . --platforms=android --org com.cyberray
+        run: flutter create --project-name cyber_ray --platforms=android --org com.cyberray .
 
       - name: Install dependencies
         run: flutter pub get
 
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: CyberRay-Release
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: CyberRay-APK
+          path: build/app/outputs/flutter-apk/*.apk
